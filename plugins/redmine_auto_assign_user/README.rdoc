@@ -1,0 +1,3 @@
+= auto assigned user
+
+If an user forget to assign the issue, this plugin will auto-assign to the first project manager role defined.

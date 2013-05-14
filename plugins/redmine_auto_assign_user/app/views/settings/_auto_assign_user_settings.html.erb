@@ -1,0 +1,14 @@
+    <%-
+      roles = Role.all(:order => "position ASC")
+
+      selected_manager_roles = @settings['manager_roles'].collect(&:to_i) unless @settings['manager_roles'].blank?
+      selected_manager_roles ||= []
+
+    -%>
+
+<p><%= content_tag(:label, l(:label_manager_roles)) %><%=
+      select_tag("settings[manager_roles]",
+                 content_tag(:option, '') + options_from_collection_for_select(roles, :id, :name, selected_manager_roles ),
+                 :multiple => true,
+                 :size => 10)
+    %></p>
