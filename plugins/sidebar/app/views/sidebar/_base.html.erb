@@ -1,0 +1,14 @@
+<% if project %>
+  <% sidebar = SidebarContent.find_by_project_id(project.id) %>
+  <% url = nil %>
+  <% if request.respond_to?(:request_uri) %>
+    <% url = request.request_uri %>
+  <% elsif request.respond_to?(:url) %>
+    <% url = request.url %>
+  <% end %>
+  <% if sidebar && url &&
+      ((sidebar.location == 'only_regexp' && (sidebar.url_regexp.blank? || url =~ Regexp.new(sidebar.url_regexp))) ||
+       (sidebar.location == 'except_regexp' && (sidebar.url_regexp.blank? || !(url =~ Regexp.new(sidebar.url_regexp))))) %>
+    <%= sidebar_content(sidebar, project) %>
+  <% end %>
+<% end %>
