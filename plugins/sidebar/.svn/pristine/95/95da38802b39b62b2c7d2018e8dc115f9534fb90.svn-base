@@ -1,3 +1,0 @@
-#admin-menu a.sidebar, .icon-sidebar {
-    background-image: url(../images/sidebar.png);
-}

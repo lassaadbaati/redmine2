@@ -1,6 +1,0 @@
-<% if project %>
-  <% sidebar = SidebarContent.find_by_project_id(project.id) %>
-  <% if sidebar && sidebar.location == 'project' %>
-    <%= sidebar_content(sidebar, project) %>
-  <% end %>
-<% end %>
